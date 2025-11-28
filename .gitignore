@@ -1,0 +1,59 @@
+# ================================
+# Global
+# ================================
+.DS_Store
+Thumbs.db
+*.log
+.env
+*.env
+*.local
+
+# ================================
+# Java / Spring Boot
+# ================================
+/backend-spring-wetech/target/
+/backend-spring-wetech/.classpath
+/backend-spring-wetech/.project
+/backend-spring-wetech/.settings/
+/backend-spring-wetech/.idea/
+/backend-spring-wetech/*.iml
+
+# Maven
+/backend-spring-wetech/.mvn/wrapper/maven-wrapper.jar
+
+# Build output
+/backend-spring-wetech/bin/
+/backend-spring-wetech/out/
+
+# OS / Editor
+/backend-spring-wetech/.vscode/
+
+# ================================
+# NodeJS / ReactJS
+# ================================
+/frontend-wetech/node_modules/
+/frontend-wetech/build/
+/frontend-wetech/.next/
+/frontend-wetech/dist/
+/frontend-wetech/.env
+/frontend-wetech/.env.local
+/frontend-wetech/npm-debug.log
+/frontend-wetech/yarn-debug.log
+/frontend-wetech/yarn-error.log
+/frontend-wetech/package-lock.json
+
+# Editor
+/frontend-wetech/.vscode/
+/frontend-wetech/.idea/
+
+# ================================
+# Docker
+# ================================
+docker-compose.override.yml
+*.pid
+
+# ================================
+# Others
+# ================================
+*.tmp
+*.bak
