@@ -3,10 +3,10 @@ services:
     image: mysql:8.0
     container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 1234567
       MYSQL_DATABASE: mydb
       MYSQL_USER: user
-      MYSQL_PASSWORD: 123456
+      MYSQL_PASSWORD: 1234567
     ports:
       - "3307:3306"
     # volumes:
@@ -24,7 +24,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb
       SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: 123456
+      SPRING_DATASOURCE_PASSWORD: 1234567
       JWT_SECRET: secret-very-strong-key-here
       CLOUDINARY_CLOUD_NAME: CLOUDINARY_CLOUD_NAME_TEST
       CLOUDINARY_API_KEY: CLOUDINARY_API_KEY_TEST
