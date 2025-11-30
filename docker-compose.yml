@@ -1,6 +1,20 @@
-version: '3.8'
-
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3307:3306"
+    # volumes:
+    #   - mysql_data:/var/lib/mysql
+    restart: always
+    networks:
+      - wetech-network
+
   backend:
     build:
       context: ./backend-spring-wetech
@@ -8,11 +22,13 @@ services:
     container_name: backend
     restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://<POSTGRES_HOST>:<POSTGRES_PORT>/<POSTGRES_DB>
-      SPRING_DATASOURCE_USERNAME: <POSTGRES_USER>
-      SPRING_DATASOURCE_PASSWORD: <POSTGRES_PASSWORD>
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: 123456
+      JWT_SECRET: secret-very-strong-key-here
+      CLOUDINARY_CLOUD_NAME: CLOUDINARY_CLOUD_NAME_TEST
+      CLOUDINARY_API_KEY: CLOUDINARY_API_KEY_TEST
+      CLOUDINARY_API_SECRET: CLOUDINARY_API_SECRET_TEST
     ports:
       - "8080:8080"
     networks:
@@ -22,6 +38,8 @@ services:
     build:
       context: ./frontend-wetech
       dockerfile: Dockerfile
+      args:
+      - REACT_APP_BACKEND_URL=http://localhost:8080
     container_name: frontend
     restart: always
     depends_on:
